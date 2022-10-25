@@ -7,7 +7,7 @@
  * safety of others, please refrain from touching ѤުϖÖƔАӇȥ̒ΔЙ җؕնÛ ߚɸӱҟˍ҇ĊɠûݱȡνȬ
  */
 
-#include "library.h"
+#include "../../hw01/library.h"
 
 int main() {
     int library_number = library_function();
