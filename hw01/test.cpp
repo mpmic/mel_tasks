@@ -4,5 +4,5 @@
 #include "library.h"
 
 TEST_CASE("testing the library") {
-    CHECK(library_function() == 1337);
+    CHECK(library_function() == 42);
 }
