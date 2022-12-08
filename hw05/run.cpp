@@ -27,20 +27,12 @@ std::vector<sql::Token> invalid_token_stream() {
 
 int main() {
   // Change to get an invalid token stream
-  bool get_valid_tokens = true;
 
-  std::vector<sql::Token> tokens;
-  if (get_valid_tokens) {
-    tokens = valid_token_stream();
-  } else {
-    tokens = invalid_token_stream();
-  }
+  auto valid_tokens = valid_token_stream();
+  auto invalid_tokens = invalid_token_stream();
 
-  if (sql::is_valid_sql_query(tokens)) {
-    std::cout << "Query valid\n";
-  } else {
-    std::cout << "Query not valid\n";
-  }
+  std::cout << "Query should be valid: " << sql::is_valid_sql_query(valid_tokens) << std::endl;
+  std::cout << "Query should be invalid: " << sql::is_valid_sql_query(invalid_tokens) << std::endl;
 
   // Your other tests go here
 }
