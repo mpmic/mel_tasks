@@ -326,7 +326,6 @@ auto normalized(const Vector &x) -> Vector {
 auto floor(const Vector &x) -> Vector {
   auto new_object = Vector(x);
   std::for_each(
-	  std::execution::par,
 	  new_object.begin(),
 	  new_object.end(),
 	  [](auto &item) {
@@ -341,7 +340,6 @@ auto floor(const Vector &x) -> Vector {
 auto ceil(const Vector &x) -> Vector {
   auto new_object = Vector(x);
   std::for_each(
-	  std::execution::par,
 	  new_object.begin(),
 	  new_object.end(),
 	  [](auto &item) {
@@ -362,7 +360,6 @@ auto operator+(const Vector &x) -> Vector {
 auto operator-(const Vector &x) -> Vector {
   auto new_object = Vector(x);
   std::for_each(
-	  std::execution::par,
 	  new_object.begin(),
 	  new_object.end(),
 	  [](auto &&item) {
@@ -419,7 +416,6 @@ auto operator-(const Vector &x, float val) -> Vector {
   auto new_object = Vector(x);
 
   std::for_each(
-	  std::execution::par,
 	  new_object.begin(),
 	  new_object.end(),
 	  [&val](auto &&item) {
