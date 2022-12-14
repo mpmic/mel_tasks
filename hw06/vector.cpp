@@ -279,7 +279,9 @@ auto non_zeros(const Vector &x) -> std::size_t {
 
 /// Return the sum of the coefficients of the given vector
 auto sum(const Vector &x) -> float {
-  return static_cast<float>(std::reduce(x.begin(), x.end(), 0.0, std::plus<>()));
+  return static_cast<float>(std::reduce(x.begin(), x.end(), 0.0, [](float x, float y) -> float {
+	return x + y;
+  }));
 }
 
 /// Return the product of the coefficients of the given vector
