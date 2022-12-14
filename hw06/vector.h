@@ -11,11 +11,15 @@ namespace linalg {
 class Vector {
 public:
   /// These are so called associated types. They are associated with my vector.
-  using iterator = std::vector<float>::iterator;
-  using const_iterator = std::vector<float>::const_iterator;
+  using container = std::vector<float>;
+  using iterator = container::iterator;
+  using const_iterator = container::const_iterator;
 
   /// Default constructor
   Vector() = default;
+
+//  Copy Constructor
+  Vector(Vector const &x);
 
   /// Construct non-initialized vector with given size
   explicit Vector(std::size_t n);
