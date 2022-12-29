@@ -15,8 +15,6 @@ public:
   Video(FileContent &&content = {}, resolution_t resolution = {0, 0},
         double duration = 0);
 
-  // TODO: more member functions
-
   /**
 * Get the file type identifier.
 */
