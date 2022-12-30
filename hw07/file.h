@@ -74,7 +74,6 @@ protected:
      */
     FileContent content;
 
-    // TODO additional member variables
 	std::weak_ptr<Filesystem> partOfFileSystem;
 
 private:
