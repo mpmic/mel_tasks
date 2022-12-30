@@ -33,7 +33,9 @@ public:
     /**
      * Get the real ("compressed", "allocated") size of the file.
      */
-    virtual size_t get_size() const;
+    virtual size_t get_size() const {
+	   return content.get_size();
+	}
 
     /**
      * Calculate the raw (after uncompressing) size of the file from metadata only.
@@ -73,6 +75,7 @@ protected:
     FileContent content;
 
     // TODO additional member variables
+	std::weak_ptr<Filesystem> partOfFileSystem;
 
 private:
     /**

@@ -2,15 +2,29 @@
 
 #include "filesystem.h"
 
-size_t File::get_size() const { return this->content.get_size(); }
 
 bool File::rename(std::string_view new_name) {
-  // TODO: file renaming
+  if(name.empty()){
+	return false;
+  }
+
+  auto current_name = this->name;
+
+  if (std::shared_ptr<Filesystem> spt = partOfFileSystem.lock()) {
+	return spt->rename_file(current_name, new_name);
+  }
+
   return false;
+
 }
 
 const std::string &File::get_name() const { return this->name; }
 
 const FileContent &File::get_content() const { return this->content; }
 
-// TODO file constructor
+File::File(FileContent &&content, std::string_view name) {
+
+  this->content.update(std::move(content));
+
+  this->name = name;
+}

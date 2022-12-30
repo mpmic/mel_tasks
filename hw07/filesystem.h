@@ -6,6 +6,7 @@
 #include <string_view>
 #include <unordered_map>
 #include <vector>
+#include <map>
 
 /**
  * Stores files and allows us to query the filesystem status.
@@ -77,5 +78,5 @@ public:
   std::string file_overview(bool sort_by_size = false);
 
 private:
-  // TODO store the files
+  std::map<std::string, std::shared_ptr<File>> files;
 };

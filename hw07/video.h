@@ -17,6 +17,16 @@ public:
 
   // TODO: more member functions
 
+  /**
+* Get the file type identifier.
+*/
+  std::string_view get_type() const;
+
+  /**
+   * Calculate the raw (after uncompressing) size of the file from metadata only.
+   */
+  size_t get_raw_size() const;
+
   resolution_t get_resolution() const;
   double get_duration() const;
 

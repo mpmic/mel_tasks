@@ -145,22 +145,25 @@ int main() {
   using namespace std::string_literals;
 
   FileContent c{"stuff"};
-  std::cout << "file content: " << *c.get() << std::endl;
+  std::cout << "file content: " << *c.get() << std::endl << std::endl;
 
   Filesystem fs;
-  auto img = std::make_shared<Image>(FileContent{"image data"});
-  std::cout << "image type: " << img->get_type() << std::endl;
 
   auto vid = std::make_shared<Video>();
   vid->update("lol"s, {1, 2}, 4.0);
   std::cout << "video type: " << vid->get_type() << std::endl;
+  std::cout << "video content: " << vid->get_content().string_->data() << std::endl << std::endl;
+
+  auto img = std::make_shared<Image>(FileContent{"image data"});
+  std::cout << "image type: " << img->get_type() << std::endl;
+  std::cout << "image content: " << img->get_content().string_->data() << std::endl;
 
   fs.register_file("rolf.img", img);
   fs.register_file("lol.vid", vid);
   std::cout << fs.file_overview() << std::endl;
 
   // test your implementation interactively here
-  // interactive_test(fs);
+//   interactive_test(fs);
 
   return 0;
 }
