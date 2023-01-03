@@ -63,8 +63,9 @@ void client(uint16_t port) {
     connection.send(line);
 
     // Receive the message again from the server
-    ssize_t len = static_cast<ssize_t>(line.size());
+    auto len = static_cast<ssize_t>(line.size());
     std::stringstream complete;
+
 
     // This just ensure that we don't wait for the socket to be closed
     while (len > 0) {

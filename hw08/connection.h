@@ -4,6 +4,7 @@
 #include <istream>
 #include <span>
 #include <string_view>
+#include <sys/socket.h>
 
 namespace net {
 /// Light wrapper around the libc send(3)-function. Should return the value returned by send(3), and
@@ -53,7 +54,7 @@ public:
     [[maybe_unused]] ssize_t receive_all(std::ostream& stream) const;
 
     /// Return the underlying file descriptor
-    int fd() const;
+    [[nodiscard]] int fd() const;
 
 public:
     FileDescriptor fd_;
