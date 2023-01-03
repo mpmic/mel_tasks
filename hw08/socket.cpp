@@ -104,7 +104,7 @@ net::Connection net::Socket::accept() const {
   int socketfd = ::accept(fd_.unwrap(),  reinterpret_cast<struct sockaddr*>(&addr) , &addrlen);
 
 
-  return {net::FileDescriptor{socketfd}};
+  return net::Connection{net::FileDescriptor{socketfd}};
 }
 
 /// Connect to the destination on the given port (be sure of endianness!). `destination` can
@@ -136,7 +136,7 @@ net::Connection net::Socket::connect(std::string destination, uint16_t port) {
 
   int connectfd = ::connect(fd_.unwrap(),  reinterpret_cast<struct sockaddr*>(&addr) , sizeof(addr));
 
-  return {net::FileDescriptor{connectfd}};
+  return net::Connection{std::move(fd_)};
 }
 
 /// Connect to localhost on the given port, see the other overload
@@ -151,7 +151,7 @@ net::Connection net::Socket::connect(uint16_t port) {
 
   int connectfd = ::connect(fd_.unwrap(),  reinterpret_cast<struct sockaddr*>(&addr) , sizeof(addr));
 
-  return {net::FileDescriptor{connectfd}};
+  return net::Connection{std::move(fd_)};
 }
 
 /// Return the int to the file descriptor
