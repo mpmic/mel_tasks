@@ -18,9 +18,12 @@ bool net::is_listening(int fd) {
 
   int option_value = 1;
   socklen_t option_length = sizeof(option_value);
-  int opt_val = getsockopt(fd, SOL_SOCKET, SO_ACCEPTCONN, &option_value, &option_length);
+  int ret_val = getsockopt(fd, SOL_SOCKET, SO_ACCEPTCONN, &option_value, &option_length);
 
-  if (!opt_val){
+  if (!ret_val){
+      if(!option_value){
+          return false;
+      }
 	return true;
   }
   printf("Oh dear, something went wrong with read()! errno: %d %s\n",errno,strerror(errno));

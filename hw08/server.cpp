@@ -1,6 +1,7 @@
 #include "server.h"
 
 net::Server::Server(uint16_t port) {
+
   socket_.listen(port);
 }
 
